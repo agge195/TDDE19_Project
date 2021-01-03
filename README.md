@@ -150,13 +150,3 @@ Python 2.8.1, TensorFlow 2.1, Keras 2.3 and  other common packages listed in <co
 inux: https://github.com/waleedka/coco
     * Windows: https://github.com/philferriere/cocoapi. You must have the Visual C++ 2015 build tools on your path (see the repo for additional details) 
 
-### Our work
-1. Clone this repository
-2. Change directory and install dependencies
-
-    <code>
-    cd Mask_RCNN<br>
-    pip3 install -r requirements.txt
-    </code>
-
-
