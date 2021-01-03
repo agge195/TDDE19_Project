@@ -161,12 +161,12 @@ inux: https://github.com/waleedka/coco
     
 ### File Structure
 
----->TDDE19_Project (Top)
+---->TDDE19_Project (1)
 
----> aktwelve_mask_rcnn
+---> aktwelve_mask_rcnn (2)
 
----> project_files
---> datasets -> cig_butts > real_test, train, val
+---> project_files (2)
+--> datasets -> cig_butts
 --> dataset_cig_config.py
 --> dataset_class.py
 --> main.py
