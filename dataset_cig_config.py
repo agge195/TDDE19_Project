@@ -11,7 +11,7 @@ class CigButtsConfig(Config):
     # Number of classes (including background)
     NUM_CLASSES = 1 + 1  # background + 1 (cig_butt)
 
-    LEARNING_RATE = 0.001
+    LEARNING_RATE = 0.0005
     # Training images dimensions
     IMAGE_MIN_DIM = 512
     IMAGE_MAX_DIM = 512

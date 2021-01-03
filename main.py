@@ -22,13 +22,10 @@ gpus = tf.config.experimental.list_physical_devices('GPU')
 for gpu in gpus:
   tf.config.experimental.set_memory_growth(gpu, True)
 
-# Find root directory
 MODEL_DIR = os.path.join(ROOT_DIR, "logs")
 
-# Local path to trained weights file
 COCO_MODEL_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 
-# Download COCO trained weights from Releases if needed
 if not os.path.exists(COCO_MODEL_PATH):
     utils.download_trained_weights(COCO_MODEL_PATH)
 
@@ -91,7 +88,6 @@ def predict(dataset_val):
 
     model_path = model.find_last()
 
-    # Load trained weights (fill in path to trained weights here)
     assert model_path != "", "Provide path to trained weights"
     print("Loading weights from ", model_path)
     model.load_weights(model_path, by_name=True)
@@ -111,8 +107,8 @@ def predict(dataset_val):
 
         scores.append(r['scores'])
 
-        #visualize.display_instances(img, r['rois'], r['masks'], r['class_ids'],
-        #                            dataset_val.class_names, r['scores'], figsize=(5, 5))
+        visualize.display_instances(img, r['rois'], r['masks'], r['class_ids'],
+                                    dataset_val.class_names, r['scores'], figsize=(5, 5))
 
 
     mAP, F1_scores = calculate_mAP_F1(dataset_val, model, inference_config, image_paths)
@@ -130,14 +126,10 @@ def train(config, dataset_train, dataset_val, predict_ = False):
     if init_with == "imagenet":
         model.load_weights(model.get_imagenet_weights(), by_name=True)
     elif init_with == "coco":
-        # Load weights trained on MS COCO, but skip layers that
-        # are different due to the different number of classes
-        # See README for instructions to download the COCO weights
         model.load_weights(COCO_MODEL_PATH, by_name=True,
                            exclude=["mrcnn_class_logits", "mrcnn_bbox_fc",
                                     "mrcnn_bbox", "mrcnn_mask"])
     elif init_with == "last":
-        # Load the last model you trained and continue training
         model.load_weights(model.find_last(), by_name=True)
 
     start_train = time.time()
@@ -172,18 +164,12 @@ def setup_training(tune_ = False, predict_ = False):
 
         print("done")
 
-
-
-
-
-setup_training(predict_= True, tune_= True)
+setup_training(predict_= True, tune_= False)
 
 # Confidence when classifying from real_test
 """
 resnet101, lr=0.0001, mAP: 0.9
 resnet101, lr=0.001, mAP: 0.93
 resnet50, lr=0.0001, mAP: 0.17213982283196677
-resnet50, lr=0.001, mAP: 0.0 #bug
+resnet50, lr=0.001, mAP: 0.9275
 """
-# TODO 1: Do this for custom dataset -> coco with selected classes?
-# TODO 2: Hyperparameter tuning

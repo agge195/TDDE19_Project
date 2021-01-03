@@ -5,9 +5,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 class CocoLikeDataset(utils.Dataset):
-
     def load_data(self, annotation_json, images_dir):
-
         # Load json from file
         json_file = open(annotation_json)
         coco_json = json.load(json_file)
@@ -62,7 +60,6 @@ class CocoLikeDataset(utils.Dataset):
                 )
 
     def load_mask(self, image_id):
-
         image_info = self.image_info[image_id]
         annotations = image_info['annotations']
         instance_masks = []
