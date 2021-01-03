@@ -158,20 +158,5 @@ inux: https://github.com/waleedka/coco
     cd Mask_RCNN<br>
     pip3 install -r requirements.txt
     </code>
-    
-### File Structure
-
----->TDDE19_Project (1)
-
----> aktwelve_mask_rcnn (2)
-
----> project_files (2)
---> datasets -> cig_butts
-
---> dataset_cig_config.py
---> dataset_class.py
---> main.py
---> mask_rcnn_coco.h5
-
 
 
