@@ -147,6 +147,6 @@ Python 2.8.1, TensorFlow 2.1, Keras 2.3 and  other common packages listed in <co
     pip3 install -r requirements.txt
     </code>
 
-inux: https://github.com/waleedka/coco
+Linux: https://github.com/waleedka/coco
     * Windows: https://github.com/philferriere/cocoapi. You must have the Visual C++ 2015 build tools on your path (see the repo for additional details) 
 
